@@ -16,7 +16,7 @@ const item = {
 }
 
 /* Third screen: light pink, "Our Wedding Date / Save the Date", divider, slot machine, calendar button */
-export default function WeddingDate({ intro, heading, reels, calendarLabel, onCalendarClick }) {
+export default function WeddingDate({ intro, heading, reels, calendarLabel, calendarUrl }) {
   return (
     <section className="std__date">
       <motion.div
@@ -39,7 +39,7 @@ export default function WeddingDate({ intro, heading, reels, calendarLabel, onCa
           <SlotMachine reels={reels} />
         </motion.div>
         <motion.div variants={item}>
-          <IconButton icon="📅" label={calendarLabel} variant="dark" onClick={onCalendarClick} />
+          <IconButton icon="📅" label={calendarLabel} variant="dark" href={calendarUrl} />
         </motion.div>
       </motion.div>
     </section>
