@@ -1,0 +1,17 @@
+.std__photo {
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+  display: block;
+}
+
+.std__photo--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f7d4e6, #e9b3cf);
+  color: #a3326d;
+  font-family: var(--font-serif);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}

@@ -1,0 +1,25 @@
+:root {
+  /* Colors */
+  --color-bg: #fdf8f3;
+  --color-surface: #ffffff;
+  --color-primary: #b76e79;   /* rose gold */
+  --color-accent: #c9a96e;    /* soft gold */
+  --color-text: #3e3a39;
+  --color-text-muted: #7a7270;
+
+  /* Typography */
+  --font-script: 'Great Vibes', cursive;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Montserrat', sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration: 0.8s;
+}

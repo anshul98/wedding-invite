@@ -1,0 +1,31 @@
+.std__scroll-hint {
+  position: absolute;
+  bottom: max(4%, env(safe-area-inset-bottom));
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  color: #fff;
+  pointer-events: none;
+}
+
+.std__scroll-arrow {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: std-arrow-bounce 1.6s ease-in-out infinite;
+}
+
+@keyframes std-arrow-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(4px); }
+}

@@ -1,0 +1,27 @@
+/* Top edge sits inside the slot opening (≈31% of plate height); wide enough for the swing */
+.std__slip-clip {
+  position: absolute;
+  top: 31%;
+  left: 20%;
+  width: 60%;
+  height: 72%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.std__slip {
+  /* 32% of plate width (slot opening is ~36%) → 32/60 of the clip box */
+  width: calc(32 / 60 * 100%);
+  margin: 0 auto;
+  padding: 6% 6% 14%;
+  display: flex;
+  flex-direction: column;
+  background: #fffaf6;
+  transform-origin: 50% 0; /* hangs from the slot */
+  box-shadow: 0 6px 14px rgba(60, 0, 30, 0.35);
+}
+
+/* space between the photos (a % margin is relative to the slip's width, so it scales with it) */
+.std__slip > * + * {
+  margin-top: 6%;
+}

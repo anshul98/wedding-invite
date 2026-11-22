@@ -1,0 +1,83 @@
+/* Overlay covering the parent; never blocks taps */
+.std-petals {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.std-petals__defs {
+  position: absolute;
+}
+
+/* falls from just above the top to just below the bottom */
+.std-petals__fall {
+  position: absolute;
+  top: 0;
+  animation: std-petal-fall linear infinite;
+  will-change: transform;
+}
+
+/* drifts side to side while falling */
+.std-petals__sway {
+  display: block;
+  animation: std-petal-sway ease-in-out infinite alternate;
+}
+
+/* tumbles in 3D, so the petal turns and catches the light */
+.std-petals__petal {
+  display: block;
+  animation: std-petal-spin linear infinite;
+  filter: drop-shadow(0 1px 1px rgba(160, 60, 100, 0.18));
+}
+
+.std-petals--paused .std-petals__fall,
+.std-petals--paused .std-petals__sway,
+.std-petals--paused .std-petals__petal {
+  animation-play-state: paused;
+}
+
+@keyframes std-petal-fall {
+  from {
+    transform: translateY(-40px);
+  }
+  to {
+    transform: translateY(calc(100vh + 40px));
+    transform: translateY(calc(100dvh + 40px));
+  }
+}
+
+@keyframes std-petal-sway {
+  from {
+    transform: translateX(calc(var(--sway) * -1));
+  }
+  to {
+    transform: translateX(var(--sway));
+  }
+}
+
+/* turns all the way round, but only tilts up to ~55deg so it never goes edge-on */
+@keyframes std-petal-spin {
+  0% {
+    transform: perspective(200px) rotateZ(0deg) rotateX(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: perspective(200px) rotateZ(90deg) rotateX(50deg) rotateY(15deg);
+  }
+  50% {
+    transform: perspective(200px) rotateZ(180deg) rotateX(10deg) rotateY(-40deg);
+  }
+  75% {
+    transform: perspective(200px) rotateZ(270deg) rotateX(-45deg) rotateY(10deg);
+  }
+  100% {
+    transform: perspective(200px) rotateZ(360deg) rotateX(0deg) rotateY(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .std-petals {
+    display: none;
+  }
+}

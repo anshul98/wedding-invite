@@ -1,0 +1,49 @@
+/*
+ * Mobile-first save-the-date page.
+ * .std is a fixed full-screen scroll container. Scrolling is locked (overflow hidden)
+ * until the intro finishes — a fixed container is the reliable way to lock scroll on iOS.
+ */
+.std {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+  background: #8a0a4a;
+}
+
+.std--scrollable {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* First screen: exactly one viewport tall */
+.std__screen {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.18) 0%, transparent 60%),
+    linear-gradient(180deg, #d81b7a 0%, #b0105f 50%, #8a0a4a 100%); /* dark pink */
+}
+
+.std--scrollable .std__screen {
+  cursor: default;
+}
+
+/* Shared vertical white / light-pink stripes (Dearest Gentle Reader + closing page) */
+.std-stripes {
+  background: repeating-linear-gradient(
+    90deg,
+    #ffffff 0,
+    #ffffff 34px,
+    #fbd6e6 34px,
+    #fbd6e6 68px
+  );
+}

@@ -1,0 +1,58 @@
+/*
+ * Exactly one screen tall on every device. Text and button take what they need;
+ * the slot machine gets all remaining height (and is limited by width too).
+ */
+.std__date {
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1rem, 4vh, 2.5rem) 1rem;
+  background: #fde4ee; /* light pink */
+  color: #b0105f; /* dark pink — text, line and heart */
+  text-align: center;
+  overflow: hidden; /* falling hearts stop at the bottom of the screen */
+}
+
+.std__date-content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* same style as "We are getting married" (shrinks on short screens) */
+.std__date-intro {
+  font-family: var(--font-serif);
+  font-size: min(4.2vw, 3vh, 1.3rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+/* same format as "Anshul & Aishwarya" */
+.std__date-heading {
+  font-family: 'Pinyon Script', var(--font-script);
+  font-weight: 400;
+  font-size: max(1.6rem, min(9.5vw, 7.5vh, 4rem));
+  white-space: nowrap;
+  line-height: 1.15;
+  margin: 0.25rem 0 0.6rem;
+}
+
+/* Fills the remaining height; the machine inside is sized to fit this box (container units) */
+.std__date-machine {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  margin: clamp(0.75rem, 4vh, 2.5rem) 0 clamp(0.75rem, 4.5vh, 2.75rem);
+  container-type: size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* slot machine is 1024x1536 — as big as fits the box, max 86% of screen width / 420px */
+.std__date-machine > .std__machine {
+  width: min(100cqw, 86vw, 420px, 100cqh * 1024 / 1536);
+}

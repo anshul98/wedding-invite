@@ -1,0 +1,155 @@
+/*
+ * Last page: exactly one screen tall, like every other page.
+ * Names + message + heart line at the top, then the footer archway filling whatever height
+ * is left, with date / hashtag / note between its pillars.
+ */
+.std__closing {
+  position: relative; /* for the petal shower overlay */
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #8e4a9c; /* purple — text, line and hearts */
+  text-align: center;
+  overflow: hidden;
+}
+
+/*
+ * The footer is wider than the image? Its mirrored outer edge repeats outwards so the art reaches
+ * the screen edges at the same height (no stretching).
+ * Each edge image is [strip | mirrored strip], so the join with the original is seamless.
+ */
+.std__closing-footer::before,
+.std__closing-footer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  pointer-events: none;
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+}
+
+.std__closing-footer::before {
+  right: calc(100% - 1px); /* 1px overlap hides sub-pixel seams */
+  background-position: right top;
+}
+
+.std__closing-footer::after {
+  left: calc(100% - 1px);
+  background-position: left top;
+}
+
+.std__closing-footer::before {
+  background-image: url('../../../assets/images/footer-edge-left.png');
+}
+
+.std__closing-footer::after {
+  background-image: url('../../../assets/images/footer-edge-right.png');
+}
+
+.std__closing-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 0 auto; /* takes any space the footer can't use, with the text centred in it */
+  justify-content: center;
+  padding: min(3rem, 6dvh) 1rem min(1rem, 2dvh);
+}
+
+/* same format as "Anshul & Aishwarya" on the first screen */
+.std__closing-names {
+  font-family: 'Pinyon Script', var(--font-script);
+  font-weight: 400;
+  font-size: min(10vw, 6.4dvh, 4.6rem);
+  white-space: nowrap;
+  line-height: 1.15;
+}
+
+.std__closing-message {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: min(4vw, 2.3dvh, 1.3rem);
+  margin-top: 0.35rem;
+}
+
+.std__closing-divider {
+  margin: min(0.8rem, 1.6dvh) 0 min(0.4rem, 0.8dvh);
+}
+
+/* the rest of the screen; the footer is fitted inside it (cqw/cqh = this box) */
+.std__closing-stage {
+  flex: 1000 1 0; /* gets the free height first ... */
+  min-height: 0;
+  max-height: calc(100vw * 1433 / 1098); /* ... but never more than the full-width footer needs */
+  width: 100%;
+  container-type: size;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* footer archway: as wide as possible while still fitting the leftover height (image is 1098 x 1433).
+   Sizes for the text inside use cqw = % of the footer width. */
+.std__closing-footer {
+  position: relative;
+  width: min(100cqw, 100cqh * 1098 / 1433);
+  flex-shrink: 0;
+  container-type: inline-size;
+}
+
+.std__closing-footer-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+/*
+ * Open space between the pillars in footer.png (1098 x 1433):
+ * roughly x 300–795 under the roof, y 270–880 above the swans.
+ */
+.std__closing-pillars {
+  position: absolute;
+  left: 27.5%;
+  width: 45%;
+  top: 19.5%;
+  height: 41%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.4cqw;
+}
+
+/* bigger than the small lines, smaller than the names */
+.std__closing-date {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 6.4cqw;
+  line-height: 1.1;
+  margin-bottom: 3cqw; /* sits a little higher */
+}
+
+/* hashtag + note: same font as "We will be happy to share this day together"; note a bit smaller */
+.std__closing-hashtag,
+.std__closing-note {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.std__closing-hashtag {
+  font-style: italic;
+  font-size: 3.8cqw;
+  letter-spacing: 0.02em;
+}
+
+.std__closing-note {
+  font-size: 3.2cqw;
+  margin-top: 3cqw; /* sits a little lower */
+}

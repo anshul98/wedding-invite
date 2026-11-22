@@ -1,0 +1,52 @@
+.hero {
+  position: relative;
+  background: radial-gradient(circle at center, #fff 0%, var(--color-bg) 70%);
+}
+
+.hero__eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.hero__names {
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-size: clamp(3rem, 10vw, 6.5rem);
+  line-height: 1.1;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-primary));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+.hero__amp {
+  font-size: 0.7em;
+}
+
+.hero__tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  margin-top: var(--space-sm);
+}
+
+.hero__date {
+  margin-top: var(--space-md);
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  letter-spacing: 0.15em;
+  color: var(--color-primary);
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: var(--space-md);
+  font-size: 1.5rem;
+  color: var(--color-accent);
+  text-decoration: none;
+}

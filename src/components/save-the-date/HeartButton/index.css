@@ -1,0 +1,12 @@
+.std__heart {
+  position: absolute;
+  /* visible heart = 60% of plate width (image has transparent padding) */
+  left: 13.15%;
+  width: 73.7%;
+  /* img height ≈ 43.3% of plate; centre it at 61% of plate height */
+  top: calc(61% - 21.65%);
+  transform-origin: center;
+  filter: drop-shadow(0 8px 14px rgba(80, 40, 90, 0.35));
+  pointer-events: none;
+  will-change: transform;
+}

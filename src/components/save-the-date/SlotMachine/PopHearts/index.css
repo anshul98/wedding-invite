@@ -1,0 +1,21 @@
+.std__pop-hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.std__pop-heart {
+  position: absolute;
+  width: 7%;
+  margin-left: -3.5%; /* centre on its x (half the width) */
+  color: #ff4f93;
+  filter: drop-shadow(0 2px 3px rgba(138, 10, 74, 0.35));
+}
+
+.std__pop-heart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: translateY(-50%); /* centre on the bar line */
+}

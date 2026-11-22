@@ -1,0 +1,64 @@
+/* Sits exactly over a white reel in the image; colours sampled from the image */
+.std__reel {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #f0d2de;
+  container-type: inline-size;
+  z-index: 2;
+}
+
+/* cylinder shading over the symbols (darker towards top & bottom) */
+.std__reel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(70, 25, 35, 0.6) 0%,
+    rgba(70, 25, 35, 0.12) 14%,
+    rgba(255, 255, 255, 0.12) 32%,
+    rgba(70, 25, 35, 0) 50%,
+    rgba(70, 25, 35, 0.1) 74%,
+    rgba(70, 25, 35, 0.3) 90%,
+    rgba(40, 12, 18, 0.75) 100%
+  );
+}
+
+.std__reel-strip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  will-change: transform;
+}
+
+.std__reel-strip--blur {
+  filter: url(#std-reel-blur);
+}
+
+.std__reel-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.std__reel-heart-outline {
+  width: 31%;
+  color: #9e4d66;
+}
+
+.std__reel-heart-solid {
+  width: 55%;
+  color: #85293a;
+}
+
+.std__reel-label {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 50cqw;
+  line-height: 1;
+  color: #8a1d3c;
+  letter-spacing: -0.02em;
+}

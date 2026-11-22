@@ -1,0 +1,12 @@
+.std__lever {
+  position: absolute;
+  overflow: hidden;
+  z-index: 0; /* behind the machine image, so it disappears behind the pivot housing */
+  pointer-events: none;
+}
+
+.std__lever img {
+  position: absolute;
+  max-width: none;
+  height: auto;
+}

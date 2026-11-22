@@ -1,0 +1,122 @@
+/* One full screen; layout is driven by where the gate lands (--gate-top / --gate-bottom, set in JS) */
+.std__venue {
+  --gate-top: 55%;
+  --gate-bottom: 80%;
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden; /* clips the window's pink box-shadow to the section */
+  color: #fff;
+  text-align: center;
+  isolation: isolate;
+}
+
+/* Whole photo, as large as needed to fill the screen (no extra zoom) */
+.std__venue-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* once measured, the photo is sized/positioned in JS so it's centred on the gate */
+.std__venue-bg--placed {
+  inset: auto;
+  max-width: none;
+  object-fit: fill;
+}
+
+/*
+ * Arch window exactly over the gate's archway (position/size/radius set in JS):
+ * full semicircle on top, straight sides, flat bottom with slightly rounded corners.
+ * The box-shadow paints the see-through pink layer over everything outside the window.
+ */
+.std__venue-window {
+  position: absolute;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0 200vmax rgba(184, 70, 118, 0.84);
+  z-index: 0;
+}
+
+/* Text fills the space above the arch, centred in it */
+.std__venue-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--gate-top);
+  padding: 1rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  text-shadow: 0 1px 3px rgba(110, 25, 60, 0.55), 0 0 12px rgba(110, 25, 60, 0.35);
+}
+
+/* Button fills the space below the arch, centred in it */
+.std__venue-action {
+  position: absolute;
+  top: var(--gate-bottom);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.std__venue-intro {
+  font-family: var(--font-serif);
+  font-size: min(3.8vw, 2.6vh, 1.1rem);
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.std__venue-label {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: min(6vw, 3.8vh, 1.8rem);
+  margin-top: 0.2rem;
+}
+
+.std__venue-city {
+  font-family: 'Pinyon Script', var(--font-script);
+  font-weight: 400;
+  font-size: min(14vw, 9.5vh, 4.75rem);
+  line-height: 1.1;
+  margin: 0.1rem 0 0.6rem;
+  -webkit-text-stroke: 0.8px #fff; /* script font has one weight — stroke makes it bolder */
+}
+
+.std__venue-line {
+  font-family: var(--font-serif);
+  font-size: min(4.2vw, 2.7vh, 1.15rem);
+  font-weight: 600;
+  line-height: 1.45;
+  max-width: 32ch;
+}
+
+.std__venue-line + .std__venue-line {
+  margin-top: 0.35rem;
+}
+
+/* landscape phones: wider lines (fewer rows) and a compact button so all fits */
+@media (orientation: landscape) and (max-height: 560px) {
+  .std__venue-text {
+    padding: 0.5rem 1rem 0.6rem;
+  }
+  .std__venue-line {
+    max-width: 52ch;
+  }
+  .std__venue-action .std__icon-btn {
+    padding: 0.4rem 1.2rem;
+    font-size: 1rem;
+  }
+}

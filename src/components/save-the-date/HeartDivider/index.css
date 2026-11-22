@@ -1,0 +1,20 @@
+.std__heart-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: min(70vw, 280px);
+}
+
+.std__heart-divider-line {
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.8;
+}
+
+.std__heart-divider-heart {
+  width: 14px;
+  height: 13px;
+  fill: currentColor;
+  flex-shrink: 0;
+}

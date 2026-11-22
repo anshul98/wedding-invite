@@ -1,0 +1,18 @@
+/* slotmachine.png is 1024x1536; overlays are positioned in % of this box */
+.std__machine {
+  position: relative;
+  aspect-ratio: 1024 / 1536;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  /* shadow follows the machine's shape (incl. the moving handle) */
+  filter: drop-shadow(0 10px 18px rgba(138, 10, 74, 0.28));
+}
+
+.std__machine-img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}

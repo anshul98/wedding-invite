@@ -1,0 +1,30 @@
+.std__title {
+  position: absolute;
+  /* just below the small Ganesh ji icon (see Ganesh/index.css) */
+  top: calc(1.6% + min(9vw, 5dvh, 44px) + min(2.4dvh, 1.2rem));
+  left: 0;
+  right: 0;
+  padding: 0 1rem;
+  text-align: center;
+  color: #fff;
+  pointer-events: none;
+}
+
+.std__title-intro {
+  font-family: var(--font-serif);
+  font-size: clamp(0.95rem, 4.2vw, 1.3rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.std__title-names {
+  /* Pinyon Script: capital A reads clearly as "A" (Great Vibes' looks like "a") */
+  font-family: 'Pinyon Script', var(--font-script);
+  font-weight: 400;
+  font-size: clamp(2.1rem, 9.5vw, 4rem);
+  white-space: nowrap;
+  line-height: 1.15;
+  margin-top: 0.25rem;
+  text-shadow: 0 4px 14px rgba(60, 0, 30, 0.35);
+}
