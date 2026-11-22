@@ -1,7 +1,7 @@
 .std__title {
   position: absolute;
   /* just below the small Ganesh ji icon (see Ganesh/index.css) */
-  top: calc(1.6% + min(9vw, 5dvh, 44px) + min(2.4dvh, 1.2rem));
+  top: calc(1.6% + var(--ganesh-size) + min(2.4dvh, 1.2rem));
   left: 0;
   right: 0;
   padding: 0 1rem;
