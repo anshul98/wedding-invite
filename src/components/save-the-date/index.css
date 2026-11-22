@@ -1,30 +1,50 @@
-.std__title {
-  position: absolute;
-  /* just below the small Ganesh ji icon (see Ganesh/index.css) */
-  top: calc(1.6% + var(--ganesh-size) + min(2.4dvh, 1.2rem));
-  left: 0;
-  right: 0;
-  padding: 0 1rem;
-  text-align: center;
-  color: #fff;
-  pointer-events: none;
+/*
+ * Mobile-first save-the-date page.
+ * .std is a fixed full-screen scroll container. Scrolling is locked (overflow hidden)
+ * until the intro finishes — a fixed container is the reliable way to lock scroll on iOS.
+ */
+.std {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+  background: #8a0a4a;
 }
 
-.std__title-intro {
-  font-family: var(--font-serif);
-  font-size: clamp(0.95rem, 4.2vw, 1.3rem);
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  opacity: 0.9;
+.std--scrollable {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-.std__title-names {
-  /* Pinyon Script: capital A reads clearly as "A" (Great Vibes' looks like "a") */
-  font-family: 'Pinyon Script', var(--font-script);
-  font-weight: 400;
-  font-size: clamp(2.1rem, 9.5vw, 4rem);
-  white-space: nowrap;
-  line-height: 1.15;
-  margin-top: 0.25rem;
-  text-shadow: 0 4px 14px rgba(60, 0, 30, 0.35);
+/* First screen: exactly one viewport tall */
+.std__screen {
+  --ganesh-size: min(12vw, 6.5dvh, 58px); /* Ganesh ji icon at the top; the title sits below it */
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.18) 0%, transparent 60%),
+    linear-gradient(180deg, #d81b7a 0%, #b0105f 50%, #8a0a4a 100%); /* dark pink */
+}
+
+.std--scrollable .std__screen {
+  cursor: default;
+}
+
+/* Shared vertical white / light-pink stripes (Dearest Gentle Reader + closing page) */
+.std-stripes {
+  background: repeating-linear-gradient(
+    90deg,
+    #ffffff 0,
+    #ffffff 34px,
+    #fbd6e6 34px,
+    #fbd6e6 68px
+  );
 }
