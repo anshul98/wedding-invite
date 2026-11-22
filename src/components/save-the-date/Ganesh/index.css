@@ -1,11 +1,11 @@
-/* very small, centred at the top; scales with the screen but stays tiny */
+/* small, centred at the top; scales with the screen */
 .std__ganesh {
   position: absolute;
   top: 1.6%;
   left: 50%;
-  width: min(9vw, 5dvh, 44px);
+  width: var(--ganesh-size); /* set on .std__screen */
   height: auto;
-  margin-left: calc(min(9vw, 5dvh, 44px) / -2);
+  margin-left: calc(var(--ganesh-size) / -2);
   pointer-events: none;
   filter: drop-shadow(0 2px 4px rgba(60, 0, 30, 0.35));
 }
