@@ -30,7 +30,7 @@
   text-transform: uppercase;
 }
 
-/* same format as "Anshul & Aishwarya" */
+/* same format as "Aishwarya & Anshul" */
 .std__date-heading {
   font-family: 'Pinyon Script', var(--font-script);
   font-weight: 400;

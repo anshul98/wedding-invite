@@ -59,7 +59,7 @@
   padding: min(3rem, 6dvh) 1rem min(1rem, 2dvh);
 }
 
-/* same format as "Anshul & Aishwarya" on the first screen */
+/* same format as "Aishwarya & Anshul" on the first screen */
 .std__closing-names {
   font-family: 'Pinyon Script', var(--font-script);
   font-weight: 400;

@@ -1,47 +1,58 @@
-import { motion } from 'framer-motion'
-import HeartDivider from '../HeartDivider'
-import SlotMachine from '../SlotMachine'
-import IconButton from '../IconButton'
-import { EASE } from '../constants'
+import { useState } from 'react'
+import Ganesh from './Ganesh'
+import Title from './Title'
+import Plate from './Plate'
+import HeartButton from './HeartButton'
+import PhotoSlip from './PhotoSlip'
+import ScrollHint from './ScrollHint'
+import GentleReader from './GentleReader'
+import WeddingDate from './WeddingDate'
+import Venue from './Venue'
+import Closing from './Closing'
+import { CLOSING, LETTER, SLIP_PHOTOS, TITLE, VENUE, WEDDING_DATE } from './content'
 import './index.css'
 
-const container = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.2 } },
-}
+/*
+ * Stages:
+ *   idle      → plate + tilted heart, waiting for a tap anywhere
+ *   inserting → heart flips and goes into the slot
+ *   revealed  → plate shrinks, title appears, photo slip feeds out of the slot
+ *   complete  → all animation done: "Scroll Down" indicator appears and scrolling is enabled
+ */
+export default function SaveTheDate() {
+  const [stage, setStage] = useState('idle')
+  const revealed = stage === 'revealed' || stage === 'complete'
+  const complete = stage === 'complete'
 
-const item = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE } },
-}
+  const handleTap = () => {
+    if (stage === 'idle') setStage('inserting')
+  }
 
-/* Third screen: light pink, "Our Wedding Date / Save the Date", divider, slot machine, calendar button */
-export default function WeddingDate({ intro, heading, reels, calendarLabel, calendarUrl }) {
   return (
-    <section className="std__date">
-      <motion.div
-        className="std__date-content"
-        variants={container}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <motion.p className="std__date-intro" variants={item}>
-          {intro}
-        </motion.p>
-        <motion.h2 className="std__date-heading" variants={item}>
-          {heading}
-        </motion.h2>
-        <motion.div variants={item}>
-          <HeartDivider />
-        </motion.div>
-        <motion.div className="std__date-machine" variants={item}>
-          <SlotMachine reels={reels} />
-        </motion.div>
-        <motion.div variants={item}>
-          <IconButton icon="📅" label={calendarLabel} variant="dark" href={calendarUrl} />
-        </motion.div>
-      </motion.div>
-    </section>
+    // Scroll container: overflow is locked until the intro animation completes
+    <div className={`std ${complete ? 'std--scrollable' : ''}`}>
+      <section className="std__screen" onClick={handleTap} aria-label="Tap to open">
+        <Ganesh />
+        <Title intro={TITLE.intro} names={TITLE.names} visible={revealed} />
+
+        <Plate revealed={revealed}>
+          <PhotoSlip
+            photos={SLIP_PHOTOS}
+            visible={revealed}
+            onShown={() => setStage('complete')}
+          />
+          {!revealed && (
+            <HeartButton inserting={stage === 'inserting'} onInserted={() => setStage('revealed')} />
+          )}
+        </Plate>
+
+        <ScrollHint visible={complete} />
+      </section>
+
+      <GentleReader heading={LETTER.heading} lines={LETTER.lines} />
+      <WeddingDate {...WEDDING_DATE} />
+      <Venue {...VENUE} />
+      <Closing {...CLOSING} />
+    </div>
   )
 }
