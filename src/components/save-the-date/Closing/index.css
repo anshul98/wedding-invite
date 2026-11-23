@@ -113,6 +113,7 @@
  */
 .std__closing-pillars {
   position: absolute;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.95), 0 0 2px rgba(255, 255, 255, 0.9); /* lifts the text off the busy background */
   left: 27.5%;
   width: 45%;
   top: 19.5%;
@@ -134,11 +135,11 @@
   margin-bottom: 3cqw; /* sits a little higher */
 }
 
-/* hashtag + note: same font as "We will be happy to share this day together"; note a bit smaller */
+/* hashtag + note: same font as "We will be happy to share this day together" (bold here); note a bit smaller */
 .std__closing-hashtag,
 .std__closing-note {
   font-family: var(--font-serif);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.2;
   text-wrap: balance;
 }

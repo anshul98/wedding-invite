@@ -47,11 +47,13 @@
   font-size: 11cqw;
   line-height: 1.15;
   color: #8e4a9c;
+  -webkit-text-stroke: 0.25cqw currentColor; /* script font only comes in one weight; thicken it */
   margin-bottom: 2cqw;
 }
 
 .std__reader-line {
   font-family: var(--font-serif);
+  font-weight: 700;
   font-size: 4.4cqw;
   line-height: 1.45;
   color: #5a3a5e;
