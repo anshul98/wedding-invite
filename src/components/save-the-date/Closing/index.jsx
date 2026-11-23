@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import footerImg from '../../../assets/images/footer.png'
+import footerImg from '../../../assets/images/footer.webp'
+import { useLaterSrc } from '../imageGate'
 import HeartDivider from '../HeartDivider'
 import PetalShower from '../PetalShower'
 import { EASE } from '../constants'
@@ -31,6 +32,7 @@ const footerAnim = {
 
 /* Last screen: stripes, names and message, then the full-width footer archway with the date, hashtag and note between its pillars */
 export default function Closing({ names, message, date, hashtag, note }) {
+  const footerSrc = useLaterSrc(footerImg)
   return (
     <motion.section
       className="std__closing std-stripes"
@@ -57,7 +59,7 @@ export default function Closing({ names, message, date, hashtag, note }) {
       <div className="std__closing-stage">
         <motion.div className="std__closing-footer" variants={footerAnim}>
           <img
-            src={footerImg}
+            src={footerSrc}
             alt="Pink marble archway with roses, two swans and a fountain"
             className="std__closing-footer-img"
             draggable="false"

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import plateImg from '../../../assets/images/plate.png'
+import plateImg from '../../../assets/images/plate.webp'
 import { EASE } from '../constants'
 import './index.css'
 
@@ -16,15 +16,15 @@ const variants = {
 }
 
 /* Children (heart, slip) are positioned in % of the plate, so they scale with it. */
-export default function Plate({ revealed, children }) {
+export default function Plate({ ready, revealed, children }) {
   return (
     <motion.div
       className="std__plate"
       variants={variants}
       initial="hidden"
-      animate={revealed ? 'revealed' : 'shown'}
+      animate={revealed ? 'revealed' : ready ? 'shown' : 'hidden'}
     >
-      <img src={plateImg} alt="" className="std__plate-img" draggable="false" />
+      <img src={plateImg} alt="" className="std__plate-img" draggable="false" fetchPriority="high" />
       {children}
     </motion.div>
   )

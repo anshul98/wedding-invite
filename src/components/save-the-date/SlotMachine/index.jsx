@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
-import slotMachineImg from '../../../assets/images/slotmachine.png'
+import slotMachineImg from '../../../assets/images/slotmachine.webp'
+import { useLaterSrc } from '../imageGate'
 import Lever from './Lever'
 import Reel from './Reel'
 import TopLights from './TopLights'
@@ -27,6 +28,7 @@ export default function SlotMachine({ reels, className = '' }) {
   const [spinId, setSpinId] = useState(0)
   const [burstId, setBurstId] = useState(0)
   const [lit, setLit] = useState(false)
+  const imgSrc = useLaterSrc(slotMachineImg)
   const busy = useRef(false)
   const stopped = useRef(0)
 
@@ -60,9 +62,9 @@ export default function SlotMachine({ reels, className = '' }) {
         </filter>
       </svg>
 
-      <Lever src={slotMachineImg} pullId={pullId} />
+      <Lever src={imgSrc} pullId={pullId} />
       <img
-        src={slotMachineImg}
+        src={imgSrc}
         alt="Slot machine"
         className="std__machine-img"
         style={{ clipPath: HANDLE_CUTOUT }}

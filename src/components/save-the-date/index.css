@@ -48,3 +48,8 @@
     #fbd6e6 68px
   );
 }
+
+/* Slow networks: hide each image until it has fully downloaded (attribute added in index.jsx) */
+.std img:not([data-loaded]) {
+  visibility: hidden;
+}

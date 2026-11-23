@@ -42,12 +42,12 @@
   background-position: left top;
 }
 
-.std__closing-footer::before {
-  background-image: url('../../../assets/images/footer-edge-left.png');
+.std--ready .std__closing-footer::before {
+  background-image: url('../../../assets/images/footer-edge-left.webp');
 }
 
-.std__closing-footer::after {
-  background-image: url('../../../assets/images/footer-edge-right.png');
+.std--ready .std__closing-footer::after {
+  background-image: url('../../../assets/images/footer-edge-right.webp');
 }
 
 .std__closing-text {

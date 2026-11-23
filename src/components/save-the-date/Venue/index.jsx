@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import lucknowImg from '../../../assets/images/lucknow.png'
+import lucknowImg from '../../../assets/images/lucknow.webp'
+import { useLaterSrc } from '../imageGate'
 import IconButton from '../IconButton'
 import { EASE } from '../constants'
 import './index.css'
@@ -88,6 +89,7 @@ export default function Venue({ intro, label, city, lines, directionsLabel, maps
   const sectionRef = useRef(null)
   const photoRef = useRef(null)
   const layout = useGateLayout(sectionRef, photoRef)
+  const photoSrc = useLaterSrc(lucknowImg)
   const gate = layout?.gate
 
   return (
@@ -102,7 +104,7 @@ export default function Venue({ intro, label, city, lines, directionsLabel, maps
     >
       <img
         ref={photoRef}
-        src={lucknowImg}
+        src={photoSrc}
         alt=""
         className={`std__venue-bg ${layout ? 'std__venue-bg--placed' : ''}`}
         style={layout?.photo}

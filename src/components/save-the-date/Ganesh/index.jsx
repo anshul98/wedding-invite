@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import ganeshImg from '../../../assets/images/ganeshji.png'
+import ganeshImg from '../../../assets/images/ganeshji.webp'
 import { EASE } from '../constants'
 import './index.css'
 

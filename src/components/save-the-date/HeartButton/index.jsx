@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import btnImg from '../../../assets/images/btn.png'
+import btnImg from '../../../assets/images/btn.webp'
 import { HEART_TILT } from '../constants'
 import './index.css'
 
@@ -43,6 +43,7 @@ export default function HeartButton({ inserting, onInserted }) {
       alt="Click here"
       className="std__heart"
       draggable="false"
+      fetchPriority="high"
       variants={variants}
       initial={{ rotate: HEART_TILT }}
       animate={inserting ? 'inserting' : 'idle'}

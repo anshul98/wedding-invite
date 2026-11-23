@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import frameImg from '../../../assets/images/frame.png'
+import frameImg from '../../../assets/images/frame.webp'
+import { useLaterSrc } from '../imageGate'
 import { EASE } from '../constants'
 import './index.css'
 
@@ -20,6 +21,7 @@ const line = {
 
 /* Second screen: striped background with the scalloped frame and a letter inside. */
 export default function GentleReader({ heading, lines }) {
+  const frameSrc = useLaterSrc(frameImg)
   return (
     <section className="std__reader std-stripes">
       <motion.div
@@ -29,7 +31,7 @@ export default function GentleReader({ heading, lines }) {
         whileInView="visible"
         viewport={{ once: true, amount: 0.4 }}
       >
-        <img src={frameImg} alt="" className="std__reader-frame-img" draggable="false" />
+        <img src={frameSrc} alt="" className="std__reader-frame-img" draggable="false" />
         <div className="std__reader-text">
           <motion.h2 className="std__reader-heading" variants={line}>
             {heading}
