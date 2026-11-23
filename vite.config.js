@@ -2,10 +2,10 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
-// GitHub Pages serves the site at https://<username>.github.io/wedding-invite/,
-// so production builds use that sub-path. Local dev stays at "/".
-// If the GitHub repo gets a different name, change '/wedding-invite/' to match.
-export default defineConfig(({ command }) => ({
-  base: command === 'build' ? '/wedding-invite/' : '/',
+// The site is served from the root of its own domain (custom domain on GitHub Pages), so base is "/".
+// (Without a custom domain it would be https://<username>.github.io/wedding-invite/ and base
+// would need to be '/wedding-invite/' for production builds.)
+export default defineConfig({
+  base: '/',
   plugins: [react()],
-}))
+})
