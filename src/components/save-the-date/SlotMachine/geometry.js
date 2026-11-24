@@ -33,3 +33,6 @@ export const TOP_LIGHTS = [
 
 // Horizontal bar the hearts pop out of (centre line of the dark channel)
 export const BAR = { y: 315, x1: 300, x2: 700 }
+
+// Round button in the middle of the machine (centre + radius of its face)
+export const CENTER_BUTTON = { x: 503, y: 1022, r: 46 }

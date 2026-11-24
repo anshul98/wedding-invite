@@ -15,3 +15,8 @@
   font-size: 0.7rem;
   letter-spacing: 0.1em;
 }
+
+/* real photos in black & white (classic photo-booth look); colour files stay unchanged */
+img.std__photo {
+  filter: grayscale(1) contrast(1.05);
+}

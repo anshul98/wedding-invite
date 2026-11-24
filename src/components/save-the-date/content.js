@@ -1,4 +1,7 @@
 // All editable text & photos for the save-the-date screen.
+import photo1 from '../../assets/images/photo1.webp'
+import photo2 from '../../assets/images/photo2.webp'
+import photo3 from '../../assets/images/photo3.webp'
 
 export const TITLE = {
   intro: 'We are getting married',
@@ -7,11 +10,15 @@ export const TITLE = {
 
 /*
  * Photos shown on the slip that comes out of the slot (top → bottom).
- * Replace `null` with an imported image, e.g.
- *   import photo1 from '../../assets/images/photo1.jpg'
- *   export const SLIP_PHOTOS = [photo1, photo2, photo3]
+ * Each is cropped to a slightly wide 5:4 frame; `focus` = which part stays in view
+ * ('50% 30%' = centre horizontally, upper third vertically) so both faces fit.
+ * The .webp files are small copies of photo1/2/3.png made for the strip.
  */
-export const SLIP_PHOTOS = [null, null, null]
+export const SLIP_PHOTOS = [
+  { src: photo1, focus: '50% 34%' },
+  { src: photo2, focus: '50% 50%' },
+  { src: photo3, focus: '50% 52%' },
+]
 
 /* Letter shown inside the frame on the second screen. Edit freely (3–4 short lines read best). */
 export const LETTER = {

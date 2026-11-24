@@ -4,6 +4,7 @@ import { useLaterSrc } from '../imageGate'
 import Lever from './Lever'
 import Reel from './Reel'
 import TopLights from './TopLights'
+import TapLabel from './TapLabel'
 import PopHearts from './PopHearts'
 import { LEVER, REELS, px, py } from './geometry'
 import './index.css'
@@ -81,6 +82,7 @@ export default function SlotMachine({ reels, className = '' }) {
           onStop={handleReelStop}
         />
       ))}
+      <TapLabel pulsing={pullId === 0} />
       <TopLights on={lit} />
       <PopHearts burstId={burstId} />
     </div>
