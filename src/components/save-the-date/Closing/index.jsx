@@ -30,6 +30,19 @@ const footerAnim = {
   },
 }
 
+/* "27th February 2027" → the "th" (or st/nd/rd) is shown small and raised, like printed invitations */
+function DateWithOrdinal({ text }) {
+  const m = text.match(/^(\d+)(st|nd|rd|th)(.*)$/)
+  if (!m) return text
+  return (
+    <>
+      {m[1]}
+      <sup className="std__closing-ordinal">{m[2]}</sup>
+      {m[3]}
+    </>
+  )
+}
+
 /* Last screen: stripes, names and message, then the full-width footer archway with the date, hashtag and note between its pillars */
 export default function Closing({ names, message, date, hashtag, note }) {
   const footerSrc = useLaterSrc(footerImg)
@@ -66,7 +79,7 @@ export default function Closing({ names, message, date, hashtag, note }) {
           />
           <div className="std__closing-pillars">
             <motion.p className="std__closing-date" variants={item}>
-              {date}
+              <DateWithOrdinal text={date} />
             </motion.p>
             <motion.p className="std__closing-hashtag" variants={item}>
               {hashtag}

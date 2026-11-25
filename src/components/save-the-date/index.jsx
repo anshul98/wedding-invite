@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Ganesh from './Ganesh'
 import Title from './Title'
 import Plate from './Plate'
@@ -12,7 +12,7 @@ import Closing from './Closing'
 import Loader from './Loader'
 import useImagesReady from './useImagesReady'
 import { LaterImagesAllowed } from './imageGate'
-import { CLOSING, LETTER, SLIP_PHOTOS, TITLE, VENUE, WEDDING_DATE } from './content'
+import { getNamedContent, SLIP_PHOTOS, VENUE } from './content'
 import plateImg from '../../assets/images/plate.webp'
 import btnImg from '../../assets/images/btn.webp'
 import ganeshImg from '../../assets/images/ganeshji.webp'
@@ -40,7 +40,13 @@ if (typeof document !== 'undefined') {
  *   revealed  → plate shrinks, title appears, photo slip feeds out of the slot
  *   complete  → all animation done: "Scroll Down" indicator appears and scrolling is enabled
  */
-export default function SaveTheDate() {
+export default function SaveTheDate({ side = 'groom' }) {
+  // 'groom' (default) → "Anshul & Aishwarya", 'bride' (/b) → "Aishwarya & Anshul"
+  const { pageTitle, TITLE, LETTER, WEDDING_DATE, CLOSING } = useMemo(() => getNamedContent(side), [side])
+  useEffect(() => {
+    document.title = pageTitle
+  }, [pageTitle])
+
   const [stage, setStage] = useState('idle')
   // first screen waits for the plate + heart, so the intro never starts with missing pieces
   const ready = useImagesReady([plateImg, btnImg, ganeshImg])

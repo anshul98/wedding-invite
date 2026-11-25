@@ -1,11 +1,35 @@
 // All editable text & photos for the save-the-date screen.
+//
+// Two versions of the invite, differing only in the order of the names:
+//   groom's side → aishwaryaanshul.site      (and any other address) → "Anshul & Aishwarya"
+//   bride's side → aishwaryaanshul.site/b                            → "Aishwarya & Anshul"
+// Everything else (date, venue, photos, hashtag…) is shared.
+// The WhatsApp preview text for each side lives in index.html / scripts/postbuild.mjs.
 import photo1 from '../../assets/images/photo1.webp'
 import photo2 from '../../assets/images/photo2.webp'
 import photo3 from '../../assets/images/photo3.webp'
 
+export const SIDES = {
+  groom: ['Anshul', 'Aishwarya'],
+  bride: ['Aishwarya', 'Anshul'],
+}
+
+/* Text that contains the names, in the order for `side` ('groom' | 'bride') */
+export function getNamedContent(side = 'groom') {
+  const [first, second] = SIDES[side] ?? SIDES.groom
+  const names = `${first} & ${second}`
+  return {
+    pageTitle: `${names} · Save the Date`,
+    TITLE: { ...TITLE, names },
+    LETTER: { ...LETTER, lines: LETTER.lines.map((l) => l.replace('{names}', `${first} and ${second}`)) },
+    WEDDING_DATE: { ...WEDDING_DATE, calendarUrl: calendarUrl(`${names} - Wedding`) },
+    CLOSING: { ...CLOSING, names },
+  }
+}
+
 export const TITLE = {
   intro: 'We are getting married',
-  names: 'Aishwarya & Anshul',
+  names: '', // filled in by getNamedContent()
 }
 
 /*
@@ -25,7 +49,7 @@ export const LETTER = {
   heading: 'Dearest Gentle Reader!',
   lines: [
     'It has come to this author’s attention that a most delightful union is upon us.',
-    'Aishwarya and Anshul request the pleasure of your company',
+    '{names} request the pleasure of your company', // {names} → "Anshul and Aishwarya" / "Aishwarya and Anshul"
     'as they begin their happily ever after.',
     'Do keep the date — further particulars shall follow.',
   ],
@@ -38,19 +62,24 @@ export const WEDDING_DATE = {
   // what the three reels stop on (left → right)
   reels: ['27', 'FEB', '27'],
   calendarLabel: 'Calendar',
-  /*
-   * "Calendar" button → opens Google Calendar's "create event" page, pre-filled.
-   * All-day event on 27 Feb 2027: Google wants the day AFTER as the end date (20270228).
-   * No repeat rule, so it's a one-off event.
-   */
-  calendarUrl:
+  calendarUrl: '', // filled in by getNamedContent()
+}
+
+/*
+ * "Calendar" button → opens Google Calendar's "create event" page, pre-filled.
+ * All-day event on 27 Feb 2027: Google wants the day AFTER as the end date (20270228).
+ * No repeat rule, so it's a one-off event.
+ */
+function calendarUrl(title) {
+  return (
     'https://calendar.google.com/calendar/render?' +
     new URLSearchParams({
       action: 'TEMPLATE',
-      text: 'Aishwarya & Anshul - Wedding',
+      text: title,
       dates: '20270227/20270228',
       location: 'Lucknow',
-    }).toString(),
+    }).toString()
+  )
 }
 
 /* Fourth screen: venue over the Lucknow photo */
@@ -69,7 +98,7 @@ export const VENUE = {
 
 /* Last screen: closing note over stripes, with the footer archway */
 export const CLOSING = {
-  names: 'Aishwarya & Anshul',
+  names: '', // filled in by getNamedContent()
   message: 'We will be happy to share this day together',
   date: '27th February 2027',
   hashtag: '#AnshulkiAishHogyi',

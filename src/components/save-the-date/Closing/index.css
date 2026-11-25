@@ -135,6 +135,14 @@
   margin-bottom: 3cqw; /* sits a little higher */
 }
 
+/* the "th" in 27th: small and raised */
+.std__closing-ordinal {
+  font-size: 0.55em;
+  vertical-align: 0.75em;
+  line-height: 0;
+  margin-left: 0.04em;
+}
+
 /* hashtag + note: same font as "We will be happy to share this day together" (bold here); note a bit smaller */
 .std__closing-hashtag,
 .std__closing-note {
