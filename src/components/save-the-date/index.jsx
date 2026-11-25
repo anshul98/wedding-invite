@@ -10,6 +10,8 @@ import WeddingDate from './WeddingDate'
 import Venue from './Venue'
 import Closing from './Closing'
 import Loader from './Loader'
+import MusicButton from './MusicButton'
+import useBackgroundMusic from './useBackgroundMusic'
 import useImagesReady from './useImagesReady'
 import { LaterImagesAllowed } from './imageGate'
 import { getNamedContent, SLIP_PHOTOS, VENUE } from './content'
@@ -42,7 +44,10 @@ if (typeof document !== 'undefined') {
  */
 export default function SaveTheDate({ side = 'groom' }) {
   // 'groom' (default) → "Anshul & Aishwarya", 'bride' (/b) → "Aishwarya & Anshul"
-  const { pageTitle, TITLE, LETTER, WEDDING_DATE, CLOSING } = useMemo(() => getNamedContent(side), [side])
+  const { pageTitle, TITLE, LETTER, WEDDING_DATE, CLOSING } = useMemo(
+    () => getNamedContent(side),
+    [side],
+  )
   useEffect(() => {
     document.title = pageTitle
   }, [pageTitle])
@@ -53,8 +58,14 @@ export default function SaveTheDate({ side = 'groom' }) {
   const revealed = stage === 'revealed' || stage === 'complete'
   const complete = stage === 'complete'
 
+  // song starts on the same "Click here" tap that opens the invite (browsers need a real tap for sound)
+  const music = useBackgroundMusic(ready)
+
   const handleTap = () => {
-    if (ready && stage === 'idle') setStage('inserting')
+    if (ready && stage === 'idle') {
+      setStage('inserting')
+      music.start()
+    }
   }
 
   return (
@@ -67,18 +78,20 @@ export default function SaveTheDate({ side = 'groom' }) {
         <Loader visible={!ready} />
 
         <Plate ready={ready} revealed={revealed}>
-          <PhotoSlip
-            photos={SLIP_PHOTOS}
-            visible={revealed}
-            onShown={() => setStage('complete')}
-          />
+          <PhotoSlip photos={SLIP_PHOTOS} visible={revealed} onShown={() => setStage('complete')} />
           {!revealed && (
-            <HeartButton inserting={stage === 'inserting'} onInserted={() => setStage('revealed')} />
+            <HeartButton
+              inserting={stage === 'inserting'}
+              onInserted={() => setStage('revealed')}
+            />
           )}
         </Plate>
 
         <ScrollHint visible={complete} />
       </section>
+
+      {/* floating stop / start button, shown from the moment the music starts */}
+      <MusicButton visible={stage !== 'idle'} playing={music.playing} onToggle={music.toggle} />
 
       {/* later pages' images start downloading only after the first screen is ready */}
       <LaterImagesAllowed.Provider value={ready}>
