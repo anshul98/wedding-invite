@@ -11,16 +11,16 @@
 }
 
 .std__title-intro {
-  font-family: var(--font-serif);
+  font-family: var(--font-sub);
+  font-weight: 400;
+  letter-spacing: 0.02em;
   font-size: clamp(0.95rem, 4.2vw, 1.3rem);
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
   opacity: 0.9;
 }
 
 .std__title-names {
-  /* Pinyon Script: capital A reads clearly as "A" (Great Vibes' looks like "a") */
-  font-family: 'Pinyon Script', var(--font-script);
+  font-family: var(--font-heading);
+  font-style: italic;
   font-weight: 400;
   font-size: clamp(2.1rem, 9.5vw, 4rem);
   white-space: nowrap;

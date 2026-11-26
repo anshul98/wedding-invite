@@ -43,9 +43,9 @@
   animation-play-state: running;
 }
 
-/* pink centre label with a small spindle hole */
+/* pink centre label (the ♪ sits on top of it) */
 .std__record-label {
-  width: 46%;
+  width: 56%;
   aspect-ratio: 1;
   display: grid;
   place-items: center;
@@ -54,28 +54,13 @@
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
-.std__record-hole {
-  width: 22%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: #4a0a26;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.5);
-}
-
-/* play symbol over the label when stopped */
-.std__record-play {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 30%;
-  height: 30%;
-  transform: translate(-50%, -50%);
-  color: #8a0a4a;
-}
-
-/* stopped: the label goes plain white so the ▶ reads clearly */
+/* stopped: the label goes plain white and the ♪ fades a little */
 .std__music-btn:not(.std__music-btn--playing) .std__record-label {
   background: #fff;
+}
+
+.std__music-btn:not(.std__music-btn--playing) .std__record-note {
+  opacity: 0.7;
 }
 
 /* sheen across the vinyl; doesn't rotate, so the record looks like it's turning under the light */
@@ -97,6 +82,31 @@
   mask: radial-gradient(circle, transparent 0 24%, #000 25%);
 }
 
+/* the ♪, centred on the label; stays upright while the record spins */
+.std__record-note {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40%;
+  height: 40%;
+  transform: translate(-50%, -50%);
+  color: #8a0a4a;
+  pointer-events: none;
+}
+
+/* line through the ♪ when the music is stopped */
+.std__record-slash {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 1.5px;
+  border-radius: 2px;
+  background: #8a0a4a;
+  transform: translate(-50%, -50%) rotate(45deg);
+  pointer-events: none;
+}
+
 @keyframes std-record-spin {
   to {
     transform: rotate(360deg);
@@ -107,8 +117,4 @@
   .std__record {
     animation: none;
   }
-}
-
-.std__music-btn:not(.std__music-btn--playing) .std__record-hole {
-  visibility: hidden;
 }

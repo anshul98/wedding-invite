@@ -61,7 +61,8 @@
 
 /* same format as "Aishwarya & Anshul" on the first screen */
 .std__closing-names {
-  font-family: 'Pinyon Script', var(--font-script);
+  font-family: var(--font-heading);
+  font-style: italic;
   font-weight: 400;
   font-size: min(10vw, 6.4dvh, 4.6rem);
   white-space: nowrap;
@@ -69,8 +70,9 @@
 }
 
 .std__closing-message {
-  font-family: var(--font-serif);
-  font-weight: 600;
+  font-family: var(--font-sub);
+  font-weight: 400;
+  letter-spacing: 0.02em;
   font-size: min(4vw, 2.3dvh, 1.3rem);
   margin-top: 0.35rem;
 }
@@ -127,11 +129,14 @@
 
 /* bigger than the small lines, smaller than the names */
 .std__closing-date {
-  font-family: var(--font-serif);
+  /* same font as "Anshul & Aishwarya" (Instrument Serif Italic) */
+  font-family: var(--font-heading);
   font-style: italic;
-  font-weight: 700;
-  font-size: 6.4cqw;
+  font-weight: 400;
+  font-size: 5.8cqw; /* clears the flowers on the pillars */
+  -webkit-text-stroke: 0.02em currentColor; /* a little bolder (this font has only one weight) */
   line-height: 1.1;
+  white-space: nowrap; /* "27th February 2027" on one line */
   margin-bottom: 3cqw; /* sits a little higher */
 }
 
@@ -143,22 +148,25 @@
   margin-left: 0.04em;
 }
 
-/* hashtag + note: same font as "We will be happy to share this day together" (bold here); note a bit smaller */
+/* hashtag + note: Helvetica Regular, like "We will be happy to share this day together"; note a bit smaller */
 .std__closing-hashtag,
 .std__closing-note {
-  font-family: var(--font-serif);
-  font-weight: 700;
+  font-family: var(--font-sub); /* Helvetica Regular */
+  font-weight: 400;
   line-height: 1.2;
   text-wrap: balance;
 }
 
 .std__closing-hashtag {
+  /* same font as the date and "Anshul & Aishwarya" (Instrument Serif Italic) */
+  font-family: var(--font-heading);
   font-style: italic;
-  font-size: 3.8cqw;
-  letter-spacing: 0.02em;
+  font-size: 4.3cqw;
+  letter-spacing: 0.01em;
+  -webkit-text-stroke: 0.015em currentColor; /* a little bold (this font has only one weight) */
 }
 
 .std__closing-note {
-  font-size: 3.2cqw;
-  margin-top: 3cqw; /* sits a little lower */
+  font-size: 2.95cqw; /* small */
+  margin-top: 10.5cqw; /* sits lower */
 }

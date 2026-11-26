@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import HeartDivider from '../HeartDivider'
 import SlotMachine from '../SlotMachine'
 import IconButton from '../IconButton'
+import { CalendarIcon } from '../IconButton/icons'
 import { EASE } from '../constants'
 import './index.css'
 
@@ -39,7 +40,7 @@ export default function WeddingDate({ intro, heading, reels, calendarLabel, cale
           <SlotMachine reels={reels} />
         </motion.div>
         <motion.div variants={item}>
-          <IconButton icon="📅" label={calendarLabel} variant="dark" href={calendarUrl} />
+          <IconButton icon={<CalendarIcon />} label={calendarLabel} variant="dark" href={calendarUrl} />
         </motion.div>
       </motion.div>
     </section>

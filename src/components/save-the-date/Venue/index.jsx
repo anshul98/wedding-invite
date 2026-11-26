@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import lucknowImg from '../../../assets/images/lucknow.webp'
 import { useLaterSrc } from '../imageGate'
 import IconButton from '../IconButton'
+import { MapPinIcon } from '../IconButton/icons'
 import { EASE } from '../constants'
 import './index.css'
 
@@ -143,7 +144,7 @@ export default function Venue({ intro, label, city, lines, directionsLabel, maps
 
       <div className="std__venue-action">
         <motion.div variants={item}>
-          <IconButton icon="🗺️" label={directionsLabel} variant="light" href={mapsUrl} />
+          <IconButton icon={<MapPinIcon />} label={directionsLabel} variant="light" href={mapsUrl} />
         </motion.div>
       </div>
     </motion.section>

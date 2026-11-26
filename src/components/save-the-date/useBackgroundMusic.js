@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-// trimmed copy of song.mp3: 0:11 → 1:20 only (~1 MB instead of 9 MB); it loops back to 0:11
+// trimmed copy of song.mp3: 0:11 → 1:19 only (~1 MB instead of 9 MB); it loops back to 0:11
 import songUrl from '../../assets/audio/song-loop.mp3'
 
 const VOLUME = 0.6 // 0–1 (iPhones ignore this and use the phone's volume)

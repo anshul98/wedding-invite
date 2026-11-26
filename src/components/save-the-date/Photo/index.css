@@ -20,3 +20,20 @@
 img.std__photo {
   filter: grayscale(1) contrast(1.05);
 }
+
+/* tiny dot in the bottom-right corner of a photo (third photo on the slip) */
+.std__photo-wrap {
+  position: relative;
+  display: block;
+}
+
+.std__photo-dot {
+  position: absolute;
+  right: 2.5%;
+  bottom: 3%;
+  width: 2%;
+  min-width: 1.5px; /* never so small that it disappears */
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #000;
+}

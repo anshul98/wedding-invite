@@ -41,7 +41,7 @@ export const TITLE = {
 export const SLIP_PHOTOS = [
   { src: photo1, focus: '50% 34%' },
   { src: photo2, focus: '50% 50%' },
-  { src: photo3, focus: '50% 52%' },
+  { src: photo3, focus: '50% 52%', dot: true },
 ]
 
 /* Letter shown inside the frame on the second screen. Edit freely (3–4 short lines read best). */
@@ -101,6 +101,6 @@ export const CLOSING = {
   names: '', // filled in by getNamedContent()
   message: 'We will be happy to share this day together',
   date: '27th February 2027',
-  hashtag: '#AnshulkiAishHogyi',
+  hashtag: '#AnshulKiAishHogyi',
   note: 'Formal invites to follow soon',
 }

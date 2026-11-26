@@ -24,15 +24,16 @@
 
 /* same style as "We are getting married" (shrinks on short screens) */
 .std__date-intro {
-  font-family: var(--font-serif);
+  font-family: var(--font-sub);
+  font-weight: 400;
+  letter-spacing: 0.02em;
   font-size: min(4.2vw, 3vh, 1.3rem);
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
 }
 
 /* same format as "Aishwarya & Anshul" */
 .std__date-heading {
-  font-family: 'Pinyon Script', var(--font-script);
+  font-family: var(--font-heading);
+  font-style: italic;
   font-weight: 400;
   font-size: max(1.6rem, min(9.5vw, 7.5vh, 4rem));
   white-space: nowrap;

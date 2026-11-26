@@ -30,7 +30,13 @@ export default function PhotoSlip({ photos, visible, onShown }) {
         onAnimationComplete={(def) => def === 'visible' && onShown?.()}
       >
         {photos.map((photo, i) => (
-          <Photo key={i} src={photo?.src} focus={photo?.focus} label={`Photo ${i + 1}`} />
+          <Photo
+            key={i}
+            src={photo?.src}
+            focus={photo?.focus}
+            dot={photo?.dot}
+            label={`Photo ${i + 1}`}
+          />
         ))}
       </motion.div>
     </div>

@@ -71,34 +71,33 @@
 }
 
 .std__venue-intro {
-  font-family: var(--font-serif);
+  font-family: var(--font-sub);
+  font-weight: 400;
+  letter-spacing: 0.02em;
   font-size: min(3.8vw, 2.6vh, 1.1rem);
-  font-weight: 700;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
 }
 
 .std__venue-label {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 600;
-  font-size: min(6vw, 3.8vh, 1.8rem);
-  margin-top: 0.2rem;
+  font-family: var(--font-sub);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  font-size: min(5.6vw, 3.6vh, 1.6rem);
+  margin-top: min(1.8rem, 3.2dvh); /* space below "Where?" */
 }
 
 .std__venue-city {
-  font-family: 'Pinyon Script', var(--font-script);
+  font-family: var(--font-heading);
+  font-style: italic;
   font-weight: 400;
   font-size: min(14vw, 9.5vh, 4.75rem);
   line-height: 1.1;
-  margin: 0.1rem 0 0.6rem;
-  -webkit-text-stroke: 0.8px #fff; /* script font has one weight — stroke makes it bolder */
+  margin: min(0.6rem, 1.2dvh) 0 0.6rem; /* space below "Location" */
 }
 
 .std__venue-line {
-  font-family: var(--font-serif);
+  font-family: var(--font-sub); /* Helvetica Regular */
+  font-weight: 400;
   font-size: min(4.2vw, 2.7vh, 1.15rem);
-  font-weight: 600;
   line-height: 1.45;
   max-width: 32ch;
 }

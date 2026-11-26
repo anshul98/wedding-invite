@@ -44,8 +44,8 @@
     90deg,
     #ffffff 0,
     #ffffff 34px,
-    #fbd6e6 34px,
-    #fbd6e6 68px
+    #fde4ee 34px, /* light pink (was #fbd6e6) */
+    #fde4ee 68px
   );
 }
 

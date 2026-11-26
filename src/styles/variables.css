@@ -11,6 +11,9 @@
   --font-script: 'Great Vibes', cursive;
   --font-serif: 'Cormorant Garamond', serif;
   --font-sans: 'Montserrat', sans-serif;
+  /* save-the-date: headings (names, titles) and the small lines above them */
+  --font-heading: 'Instrument Serif', 'Cormorant Garamond', serif; /* used in italic */
+  --font-sub: Helvetica, 'Helvetica Neue', Arial, sans-serif; /* Arial on phones without Helvetica */
 
   /* Spacing */
   --space-xs: 0.5rem;
