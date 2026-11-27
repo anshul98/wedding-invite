@@ -65,7 +65,12 @@
   color: #5a3a5e;
 }
 
-/* sign-off ("Yours in celebration, …"): a little extra space above it */
+/* sign-off ("Yours in celebration, …"): extra space above it, in the heading's font and colour */
 .std__reader-line:last-child {
+  font-family: var(--font-heading);
+  font-style: italic;
+  -webkit-text-stroke: 0.025em currentColor; /* bold (this font has only one weight) */
+  font-size: calc(var(--letter-w) * 0.056); /* a little bigger than the letter */
+  color: #8e4a9c; /* same purple as the heading */
   margin-top: calc(var(--letter-w) * 0.065);
 }
