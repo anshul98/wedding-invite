@@ -35,7 +35,7 @@
 /* Safe writing area inside the scalloped border */
 .std__reader-text {
   position: absolute;
-  inset: 15% 16.5%;
+  inset: 13% 15.5%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -57,7 +57,7 @@
 .std__reader-line {
   font-family: var(--font-sub); /* Helvetica Regular */
   font-weight: 400;
-  font-size: calc(var(--letter-w) * 0.039); /* smaller to fit the longer letter */
+  font-size: calc(var(--letter-w) * 0.042);
   line-height: 1.35;
   -webkit-text-stroke: 0.015em currentColor; /* a little bold (between regular and bold) */
   white-space: pre-line; /* \n in the text starts a new line */
