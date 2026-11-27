@@ -20,6 +20,8 @@ import btnImg from '../../assets/images/btn.webp'
 import ganeshImg from '../../assets/images/ganeshji.webp'
 import './index.css'
 
+const SONG_WAIT = 10000 // ms
+
 /*
  * Slow networks: never show a half-downloaded image. Every <img> inside the invite stays hidden
  * (CSS: .std img:not([data-loaded])) until its own load/error event, which this marks.
@@ -54,12 +56,22 @@ export default function SaveTheDate({ side = 'groom' }) {
 
   const [stage, setStage] = useState('idle')
   // first screen waits for the plate + heart, so the intro never starts with missing pieces
-  const ready = useImagesReady([plateImg, btnImg, ganeshImg])
+  const imagesReady = useImagesReady([plateImg, btnImg, ganeshImg])
+  // song downloads at the same time; it starts on the "Click here" tap (browsers need a real tap for sound)
+  const music = useBackgroundMusic()
+  // "Click here" also waits for the song, so music starts the moment it's tapped —
+  // but at most SONG_WAIT ms after the images, so a very slow/broken network never gets stuck
+  const [songWaitOver, setSongWaitOver] = useState(false)
+  useEffect(() => {
+    if (!imagesReady || music.loaded) return
+    const t = setTimeout(() => setSongWaitOver(true), SONG_WAIT)
+    return () => clearTimeout(t)
+  }, [imagesReady, music.loaded])
+  const ready = imagesReady && (music.loaded || songWaitOver)
+  // later pages' images download after the first screen + song (or once the guest has tapped)
+  const laterImagesAllowed = (imagesReady && music.loaded) || stage !== 'idle'
   const revealed = stage === 'revealed' || stage === 'complete'
   const complete = stage === 'complete'
-
-  // song starts on the same "Click here" tap that opens the invite (browsers need a real tap for sound)
-  const music = useBackgroundMusic(ready)
 
   const handleTap = () => {
     if (ready && stage === 'idle') {
@@ -93,8 +105,8 @@ export default function SaveTheDate({ side = 'groom' }) {
       {/* floating stop / start button, shown from the moment the music starts */}
       <MusicButton visible={stage !== 'idle'} playing={music.playing} onToggle={music.toggle} />
 
-      {/* later pages' images start downloading only after the first screen is ready */}
-      <LaterImagesAllowed.Provider value={ready}>
+      {/* later pages' images start downloading only after the first screen and the song */}
+      <LaterImagesAllowed.Provider value={laterImagesAllowed}>
         <GentleReader heading={LETTER.heading} lines={LETTER.lines} />
         <WeddingDate {...WEDDING_DATE} />
         <Venue {...VENUE} />
