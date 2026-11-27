@@ -44,14 +44,14 @@ export const SLIP_PHOTOS = [
   { src: photo3, focus: '50% 52%', dot: true },
 ]
 
-/* Letter shown inside the frame on the second screen. Edit freely (3–4 short lines read best). */
+/* Letter shown inside the frame on the second screen. Each entry is a paragraph. */
 export const LETTER = {
   heading: 'Dearest Gentle Reader!',
   lines: [
-    'It has come to this author’s attention that a most delightful union is upon us.',
-    '{names} request the pleasure of your company', // {names} → "Anshul and Aishwarya" / "Aishwarya and Anshul"
-    'as they begin their happily ever after.',
-    'Do keep the date — further particulars shall follow.',
+    'We have the most delightful announcement to make!',
+    'The social season’s most anticipated union is upon us, as {names} prepare to begin their happily ever after.', // {names} → "Anshul and Aishwarya" / "Aishwarya and Anshul"
+    'So, mark your calendars, ready your finest attire, and prepare to witness a love story that promises to be the talk of the ton!',
+    'Yours in celebration,\nThe Society Gazette', // \n = new line
   ],
 }
 
