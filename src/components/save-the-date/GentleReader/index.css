@@ -5,7 +5,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem 0;
+  padding: 1rem 0;
+  /* the earlier frame width; letter text is sized from this, so enlarging the frame doesn't enlarge the text */
+  --letter-w: min(90vw, 82vh * 1054 / 1493, 520px);
+  --letter-w: min(90vw, 82dvh * 1054 / 1493, 520px);
 }
 
 /*
@@ -14,8 +17,8 @@
  */
 .std__reader-frame {
   position: relative;
-  width: min(90vw, 82vh * 1054 / 1493, 520px);
-  width: min(90vw, 82dvh * 1054 / 1493, 520px);
+  width: min(100vw, 90vh * 1054 / 1493, 600px);
+  width: min(100vw, 90dvh * 1054 / 1493, 600px); /* bigger frame; the text keeps its size (see --letter-w) */
   aspect-ratio: 1054 / 1493;
   container-type: inline-size;
 }
@@ -32,12 +35,12 @@
 /* Safe writing area inside the scalloped border */
 .std__reader-text {
   position: absolute;
-  inset: 16% 18%;
+  inset: 15% 16.5%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3.2cqw;
+  gap: calc(var(--letter-w) * 0.026);
   text-align: center;
 }
 
@@ -45,16 +48,23 @@
   font-family: var(--font-heading);
   font-style: italic;
   font-weight: 400;
-  font-size: 11cqw;
+  font-size: calc(var(--letter-w) * 0.096);
   line-height: 1.15;
   color: #8e4a9c;
-  margin-bottom: 2cqw;
+  margin-bottom: calc(var(--letter-w) * 0.01);
 }
 
 .std__reader-line {
   font-family: var(--font-sub); /* Helvetica Regular */
   font-weight: 400;
-  font-size: 4.4cqw;
-  line-height: 1.4;
+  font-size: calc(var(--letter-w) * 0.039); /* smaller to fit the longer letter */
+  line-height: 1.35;
+  -webkit-text-stroke: 0.015em currentColor; /* a little bold (between regular and bold) */
+  white-space: pre-line; /* \n in the text starts a new line */
   color: #5a3a5e;
+}
+
+/* sign-off ("Yours in celebration, …"): a little extra space above it */
+.std__reader-line:last-child {
+  margin-top: calc(var(--letter-w) * 0.025);
 }
