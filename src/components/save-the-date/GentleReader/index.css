@@ -51,7 +51,7 @@
   font-size: calc(var(--letter-w) * 0.096);
   line-height: 1.15;
   color: #8e4a9c;
-  margin-bottom: calc(var(--letter-w) * 0.01);
+  margin-bottom: calc(var(--letter-w) * 0.1); /* space between heading and letter */
 }
 
 .std__reader-line {
